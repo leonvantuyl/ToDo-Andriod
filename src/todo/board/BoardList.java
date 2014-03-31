@@ -47,6 +47,7 @@ public class BoardList extends Fragment {
 		});
 		listView.setAdapter(list);
 		
+		/* TODO uncomment
 		api = new API(new OnAPIRequestListener() {
 			
 			@Override
@@ -60,7 +61,7 @@ public class BoardList extends Fragment {
 		map.put("token",User.TOKEN);
 		// Send request
 		api.request(RequestMethod.GET, "board", map, null);
-		
+		*/
 		return view;
 	}
 	
@@ -94,6 +95,11 @@ public class BoardList extends Fragment {
 	
 	public interface BoardListListener {
 		public void onItemSelected(Board b);
+	}
+
+	public static void addBoard(String value) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
