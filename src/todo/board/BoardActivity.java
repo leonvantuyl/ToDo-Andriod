@@ -42,7 +42,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.add_board:
-			addBoard();
+			addBoardDialog();
 			return true;
 		case R.id.action_settings:
 			//niks
@@ -52,7 +52,22 @@ public class BoardActivity extends Activity implements BoardListListener {
 		}
 	}
 
-	private void addBoard() {
+	
+	@Override
+	public void onItemSelected(Board b) {
+		// TODO Auto-generated method stub
+
+		Intent intent = new Intent(getApplicationContext(), ToDoListActivity.class);
+		intent.putExtra(BOARD_ID, b.id);
+		startActivity(intent);
+	}
+
+	@Override
+	public void onItemLongSelected(Board b) {
+		removeBoardDialog(b);
+	}
+	
+	private void addBoardDialog() {
 		//TODO hier een fragment van maken ?
 		
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -67,7 +82,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String value = input.getText().toString();
-				BoardList.addBoard(value);
+				boardList.addBoard(value);
 			}
 		});
 
@@ -81,13 +96,29 @@ public class BoardActivity extends Activity implements BoardListListener {
 
 	}
 
-	@Override
-	public void onItemSelected(Board b) {
-		// TODO Auto-generated method stub
+	private void removeBoardDialog(final Board b) {
+		//TODO hier een fragment van maken ?
+		
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		
+		alert.setTitle(getString(R.string.dialog_removeboard_title) +  " \"" + b.name + " \"");		
+		alert.setMessage(R.string.dialog_removeboard_description);
 
-		Intent intent = new Intent(getApplicationContext(), ToDoListActivity.class);
-		intent.putExtra(BOARD_ID, b.id);
-		startActivity(intent);
+		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				boardList.removeBoard(b.id);
+			}
+		});
+
+		alert.setNegativeButton(R.string.button_cancel, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				// Canceled.
+			}
+		});
+
+		alert.show();
+
 	}
+
 
 }
