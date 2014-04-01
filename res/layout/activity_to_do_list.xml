@@ -1,12 +1,12 @@
 <!-- http://developer.android.com/training/implementing-navigation/lateral.html#horizontal-paging -->
 
-<ViewPager
+<android.support.v4.view.ViewPager
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/listPager"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <PagerTitleStrip
+    <android.support.v4.view.PagerTitleStrip
         android:id="@+id/pager_title_strip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,4 +16,4 @@
         android:paddingTop="4dp"
         android:paddingBottom="4dp" />
 
-</ViewPager>
+</android.support.v4.view.ViewPager>

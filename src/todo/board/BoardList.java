@@ -115,7 +115,8 @@ public class BoardList extends Fragment {
 
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("bName", name);
-		api.request(RequestMethod.POST, "board", null, null, args);
+		args.put("token", User.TOKEN);
+		api.request(RequestMethod.POST, "board", null, args);
 
 	}
 
@@ -139,7 +140,7 @@ public class BoardList extends Fragment {
 
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("bid", id);
-		api.request(RequestMethod.DELETE, "board", null, null, args);
+		api.request(RequestMethod.DELETE, "board", null, args);
 
 	}
 

@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class BoardActivity extends Activity implements BoardListListener {
 
@@ -82,7 +83,11 @@ public class BoardActivity extends Activity implements BoardListListener {
 		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String value = input.getText().toString();
-				boardList.addBoard(value);
+				if(boardList != null) {
+					boardList.addBoard(value);
+				} else {
+					Toast.makeText(getApplicationContext(), "BoardList null", Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 
