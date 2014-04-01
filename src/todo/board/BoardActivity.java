@@ -24,7 +24,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_board);
-		boardList = (BoardList) this.getFragmentManager().findFragmentById(R.layout.board_list);		
+		boardList = (BoardList) this.getFragmentManager().findFragmentById(R.id.bListFragment);
 	}
 
 	@Override
@@ -69,8 +69,6 @@ public class BoardActivity extends Activity implements BoardListListener {
 	}
 	
 	private void addBoardDialog() {
-		//TODO hier een fragment van maken ?
-		
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
 		alert.setTitle(R.string.dialog_addboard_title);
@@ -101,9 +99,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 
 	}
 
-	private void removeBoardDialog(final Board b) {
-		//TODO hier een fragment van maken ?
-		
+	private void removeBoardDialog(final Board b) {	
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		
 		alert.setTitle(getString(R.string.dialog_removeboard_title) +  " \"" + b.name + " \"");		
