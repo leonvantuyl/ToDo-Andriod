@@ -57,6 +57,7 @@ public class API {
 	public static String doRequest(String method, String url, String bodyArgsStr) {
 		InputStream inputStream = null;
         String result = "";
+        int statusCode = 0;
         try {
  
             // create HttpClient
@@ -86,7 +87,7 @@ public class API {
             
             //HttpResponse httpResponse = httpclient.execute((request != null) ? request : entityRequest);
             HttpResponse httpResponse = httpclient.execute(request);
- 
+            statusCode = httpResponse.getStatusLine().getStatusCode();
             // receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();
  
@@ -101,7 +102,7 @@ public class API {
             Log.d("InputStream", e.getLocalizedMessage());
         }
  
-        return result;
+        return statusCode + "|" + result;
 	}
 	
 	private static String convertInputStreamToString(InputStream inputStream) throws IOException{
@@ -117,7 +118,8 @@ public class API {
     }
 	
 	public interface OnAPIRequestListener {
-		public void onRequestComplete(String result);
+		public void onSuccess(int statusCode, String result);
+		public void onError(int statusCode, String result);
 		//public void onBeforeSend(String url);
 	}
 	
@@ -129,8 +131,16 @@ public class API {
 			return doRequest(args[0], args[1], args[2]);
 		}
 		
-		protected void onPostExecute(String result) {
-			apiListener.onRequestComplete(result);
+		protected void onPostExecute(String resultStr) {
+			String[] args = resultStr.split("|", 1);
+			int statusCode = Integer.parseInt(args[0]);
+			String result = args[1];
+			
+			if(statusCode >= 200 && statusCode < 300) {
+				apiListener.onSuccess(statusCode, result);
+			} else {
+				apiListener.onError(statusCode, result);
+			}
 		}
 		
 	}

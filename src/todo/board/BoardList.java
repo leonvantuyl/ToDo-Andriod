@@ -99,7 +99,7 @@ public class BoardList extends Fragment {
 
 	public static void addBoard(String value) {
 		// TODO Auto-generated method stub
-		
+		// Mag geen static methode zijn
 	}
 	
 }

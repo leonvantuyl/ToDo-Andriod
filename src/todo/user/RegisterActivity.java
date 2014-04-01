@@ -80,7 +80,7 @@ public class RegisterActivity extends Activity {
 	
 	private void register(String name, String password) {
 		final RegisterActivity ra = this;
-			
+		/*
 		api = new API(new OnAPIRequestListener() {
 			
 			@Override
@@ -95,6 +95,7 @@ public class RegisterActivity extends Activity {
 		qs.put("name", name);
 		qs.put("password", password);
 		api.request(RequestMethod.POST, "user", "register", null, qs);
+		*/
 	
 		
 	}

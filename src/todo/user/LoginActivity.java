@@ -79,6 +79,7 @@ public class LoginActivity extends Activity {
 
 	public void login(String name, String password) {
 		final LoginActivity la = this;
+		/*
 		api = new API(new OnAPIRequestListener() {		
 			@Override
 			public void onRequestComplete(String result) {
@@ -115,6 +116,7 @@ public class LoginActivity extends Activity {
 		qs.put("name", name);
 		qs.put("password", password);
 		api.request(RequestMethod.GET, "user", "login", qs, null);
+		*/
 	}
 
 }
