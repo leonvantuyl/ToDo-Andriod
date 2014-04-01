@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 
@@ -80,22 +81,30 @@ public class RegisterActivity extends Activity {
 	
 	private void register(String name, String password) {
 		final RegisterActivity ra = this;
-		/*
+		
 		api = new API(new OnAPIRequestListener() {
-			
+
 			@Override
-			public void onRequestComplete(String result) {
-				//TODO kijk of je een error krijgt.							
+			public void onSuccess(int statusCode, String result) {
+				// TODO Auto-generated method stub
 				Intent intent = new Intent(ra, LoginActivity.class);
-				startActivity(intent);				
+				startActivity(intent);
+			}
+
+			@Override
+			public void onError(int statusCode, String result) {
+				// TODO Auto-generated method stub
+				if(statusCode == 409) {
+					Toast.makeText(ra.getApplicationContext(), "This username already exists", Toast.LENGTH_LONG).show();
+				}
 			}
 			
 		});
-		HashMap<String, Object> qs = new HashMap<String, Object>();
-		qs.put("name", name);
-		qs.put("password", password);
-		api.request(RequestMethod.POST, "user", "register", null, qs);
-		*/
+		HashMap<String, Object> args = new HashMap<String, Object>();
+		args.put("name", name);
+		args.put("password", password);
+		api.request(RequestMethod.POST, "user", "register", null, args);
+		
 	
 		
 	}

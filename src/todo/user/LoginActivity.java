@@ -79,36 +79,33 @@ public class LoginActivity extends Activity {
 
 	public void login(String name, String password) {
 		final LoginActivity la = this;
-		/*
+		
 		api = new API(new OnAPIRequestListener() {		
+
 			@Override
-			public void onRequestComplete(String result) {
+			public void onSuccess(int statusCode, String result) {
 				// TODO Auto-generated method stub
-				if(!TextUtils.isEmpty(result) && !result.equals("null")) {
-					try {
-						JSONObject tokenObj = new JSONObject(result);
-						if(!tokenObj.isNull("token")) {
-							User.login(tokenObj.getString("token"), prefs);
-
-							Intent intent = new Intent(la, BoardActivity.class);
-							startActivity(intent);
-						} else {
-							// Something went wrong
-						}
-
-
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				JSONObject tokenObj;
+				try {
+					tokenObj = new JSONObject(result);
+					if(!tokenObj.isNull("token")) {
+						User.login(tokenObj.getString("token"), prefs);
+	
+						Intent intent = new Intent(la, BoardActivity.class);
+						startActivity(intent);
 					}
-				} else {
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void onError(int statusCode, String result) {
+				// TODO Auto-generated method stub
+				if(statusCode == 404) {
 					// Not found
 					Toast.makeText(la.getApplicationContext(), "Wrong username or password", Toast.LENGTH_LONG).show();
-
-					//TODO Remove test code					
-					Intent intent = new Intent(la, BoardActivity.class);
-					startActivity(intent);
-
 				}
 			}
 		});
@@ -116,7 +113,7 @@ public class LoginActivity extends Activity {
 		qs.put("name", name);
 		qs.put("password", password);
 		api.request(RequestMethod.GET, "user", "login", qs, null);
-		*/
+		
 	}
 
 }

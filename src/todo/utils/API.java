@@ -102,7 +102,7 @@ public class API {
             Log.d("InputStream", e.getLocalizedMessage());
         }
  
-        return statusCode + "|" + result;
+        return statusCode + "___" + result;
 	}
 	
 	private static String convertInputStreamToString(InputStream inputStream) throws IOException{
@@ -132,7 +132,7 @@ public class API {
 		}
 		
 		protected void onPostExecute(String resultStr) {
-			String[] args = resultStr.split("|", 1);
+			String[] args = resultStr.split("___");
 			int statusCode = Integer.parseInt(args[0]);
 			String result = args[1];
 			
