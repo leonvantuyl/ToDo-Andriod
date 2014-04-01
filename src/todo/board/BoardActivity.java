@@ -63,7 +63,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String value = input.getText().toString();
-				BoardList.addBoard(value);
+				boardList.addBoard(value);
 			}
 		});
 

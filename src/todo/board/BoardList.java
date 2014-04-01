@@ -28,40 +28,27 @@ public class BoardList extends Fragment {
 
 	private API api;
 	private BoardListListener bListener;
+	private ArrayAdapter<Board> list;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.board_list, container, false);
 		ListView listView = (ListView) view.findViewById(R.id.bList);
-		final ArrayAdapter<Board> list = new BoardListAdapter(getActivity(), R.id.bListFragment);
+		list = new BoardListAdapter(getActivity(), R.id.bListFragment);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				// TODO Auto-generated method stub
 				bListener.onItemSelected(list.getItem(position));
 			}
 			
 		});
 		listView.setAdapter(list);
 		
-		/* TODO uncomment
-		api = new API(new OnAPIRequestListener() {
-			
-			@Override
-			public void onRequestComplete(String result) {
-				// TODO Auto-generated method stub
-				//Toast.makeText(getActivity(), "Response: "+result, Toast.LENGTH_LONG).show();
-				readResponse(result, list);
-			}
-		});
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("token",User.TOKEN);
-		// Send request
-		api.request(RequestMethod.GET, "board", map, null);
-		*/
+		loadBoardList();
+		
 		return view;
 	}
 	
@@ -97,9 +84,45 @@ public class BoardList extends Fragment {
 		public void onItemSelected(Board b);
 	}
 
-	public static void addBoard(String value) {
-		// TODO Auto-generated method stub
-		// Mag geen static methode zijn
+	public void addBoard(String value) {
+		final String name = value;
+		api = new API(new OnAPIRequestListener() {
+			
+			@Override
+			public void onSuccess(int statusCode, String result) {
+				loadBoardList();				
+			}			
+
+			@Override
+			public void onError(int statusCode, String result) {
+				//TODO in de API stond geen error code bij de post method van de boardcontroller. Dus het gaat alleen fout als er geen connectie is.
+				
+			}
+		});
+		
+		HashMap<String, Object> args = new HashMap<String, Object>();
+		args.put("name", name);
+		api.request(RequestMethod.POST, "board", "post", null, args);
+		
 	}
 	
+	public void loadBoardList() {
+		api = new API(new OnAPIRequestListener() {
+			
+			@Override
+			public void onSuccess(int statusCode, String result) {
+				readResponse(result, list);				
+			}
+
+			@Override
+			public void onError(int statusCode, String result) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("token",User.TOKEN);
+		// Send request
+		api.request(RequestMethod.GET, "board", map, null);
+	}
 }
