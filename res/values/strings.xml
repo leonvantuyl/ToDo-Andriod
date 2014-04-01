@@ -22,6 +22,8 @@
     <string name="action_addboard">ADD</string>
     <string name="dialog_addboard_title">Add Board</string>
     <string name="dialog_addboard_description">Fill in the name of the new board</string>
+    <string name="dialog_removeboard_title">Deleting this board:</string>
+    <string name="dialog_removeboard_description">Are you sure you want to delete? Once deleted you won\'t be able to bring the board back.</string>
     <string name="button_ok">OK</string>
     <string name="button_cancel">Cancel</string>
 

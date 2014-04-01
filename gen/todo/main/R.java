@@ -69,10 +69,12 @@ public final class R {
         public static final int action_register=0x7f050009;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int button_cancel=0x7f050015;
-        public static final int button_ok=0x7f050014;
+        public static final int button_cancel=0x7f050017;
+        public static final int button_ok=0x7f050016;
         public static final int dialog_addboard_description=0x7f050013;
         public static final int dialog_addboard_title=0x7f050012;
+        public static final int dialog_removeboard_description=0x7f050015;
+        public static final int dialog_removeboard_title=0x7f050014;
         public static final int error_field_required=0x7f05000e;
         public static final int error_incorrect_password=0x7f05000d;
         public static final int error_invalid_password=0x7f05000c;
