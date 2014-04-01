@@ -38,6 +38,7 @@ public class BoardList extends Fragment {
 		ListView listView = (ListView) view.findViewById(R.id.bList);
 		list = new BoardListAdapter(getActivity(), R.id.bListFragment);
 
+		
 		listView.setClickable(true);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
