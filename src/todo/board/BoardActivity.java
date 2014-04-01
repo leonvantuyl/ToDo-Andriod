@@ -32,6 +32,10 @@ public class BoardActivity extends Activity implements BoardListListener {
 		inflater.inflate(R.menu.board, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+	
+	public void onBackPressed() {
+		// Do nothing
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

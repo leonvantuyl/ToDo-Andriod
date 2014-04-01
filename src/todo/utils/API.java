@@ -85,8 +85,8 @@ public class API {
             }
             //request.setHeader("Content-Type", "application/json");
             
-            //HttpResponse httpResponse = httpclient.execute((request != null) ? request : entityRequest);
-            HttpResponse httpResponse = httpclient.execute(request);
+            HttpResponse httpResponse = httpclient.execute((request != null) ? request : entityRequest);
+            //HttpResponse httpResponse = httpclient.execute(request);
             statusCode = httpResponse.getStatusLine().getStatusCode();
             // receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();

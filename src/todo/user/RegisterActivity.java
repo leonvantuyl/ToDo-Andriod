@@ -95,7 +95,9 @@ public class RegisterActivity extends Activity {
 			public void onError(int statusCode, String result) {
 				// TODO Auto-generated method stub
 				if(statusCode == 409) {
-					Toast.makeText(ra.getApplicationContext(), "This username already exists", Toast.LENGTH_LONG).show();
+					EditText nameT = (EditText) findViewById(R.id.usernameRegister);
+					nameT.setError(getString(R.string.error_user_exists));
+					if(!nameT.hasFocus()) nameT.requestFocus();
 				}
 			}
 			

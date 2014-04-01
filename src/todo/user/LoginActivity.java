@@ -32,13 +32,14 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		prefs = this.getSharedPreferences("todo", Context.MODE_PRIVATE);		
-		if(prefs!= null && User.loggedIn(prefs))
-		{
-			Intent intent = new Intent(this, BoardActivity.class);
-			startActivity(intent);
-		}
+		prefs = this.getSharedPreferences("todo", Context.MODE_PRIVATE);
+		checkIsLogged();
 	}
+	
+//	public void onResume() {
+//		super.onResume();
+//		checkIsLogged();
+//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,7 +106,11 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 				if(statusCode == 404) {
 					// Not found
-					Toast.makeText(la.getApplicationContext(), "Wrong username or password", Toast.LENGTH_LONG).show();
+					EditText nameT = (EditText) findViewById(R.id.username);
+					EditText passwordT = (EditText) findViewById(R.id.password);
+					
+					nameT.setError(getString(R.string.error_wronguserpass));
+					passwordT.setError(getString(R.string.error_wronguserpass));
 				}
 			}
 		});
@@ -114,6 +119,14 @@ public class LoginActivity extends Activity {
 		qs.put("password", password);
 		api.request(RequestMethod.GET, "user", "login", qs, null);
 		
+	}
+	
+	public void checkIsLogged() {
+		if(prefs!= null && User.loggedIn(prefs))
+		{
+			Intent intent = new Intent(this, BoardActivity.class);
+			startActivity(intent);
+		}
 	}
 
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/board_vertical_margin"
+   	android:paddingLeft="@dimen/board_horizontal_margin"
+    android:paddingRight="@dimen/board_horizontal_margin"
+   	android:paddingTop="@dimen/board_vertical_margin"
+    android:orientation="horizontal" >
+    
+    <TextView android:id="@+id/taskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test description" />
+    <TextView android:id="@+id/taskEnd_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taskDescription"
+        android:text="01-01-0000 00:00:00" />
+    <CheckBox android:id="@+id/taskStatus" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" />
+    
+</RelativeLayout>

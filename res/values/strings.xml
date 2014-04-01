@@ -13,10 +13,14 @@
     <string name="action_login">Login</string>
     <string name="action_register">Register</string>
     <string name="login_progress_signing_in">Signing in&#8230;</string>
+    
     <string name="error_invalid_username">This username is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="error_wronguserpass">Wrong username or password</string>
+    <string name="error_user_exists">This username already exists</string>
+    
     <string name="title_activity_register">RegisterActivity</string>
     <string name="error_nomatch_password">The passwords are not the same</string>
     <string name="action_addboard">ADD</string>
