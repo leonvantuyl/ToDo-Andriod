@@ -10,7 +10,7 @@ public class User {
 		String token = prefs.getString("token", null);
 		if(token != null && !token.isEmpty()) {
 			TOKEN = token;
-			//return true;
+			return true;
 		}
 		return false;
 	}

@@ -23,14 +23,29 @@
     
     <string name="title_activity_register">RegisterActivity</string>
     <string name="error_nomatch_password">The passwords are not the same</string>
-    <string name="action_addboard">ADD</string>
+    <string name="action_addboard">Add board</string>
     <string name="action_logout">logout</string>
+    <string name="action_addlist">Add list</string>
+    <string name="action_removelist">Remove list</string>
+    <string name="action_addtask">Add task</string>
+    
+    <!-- dialogs -->
     <string name="dialog_logout_title">Logout ?</string>
     <string name="dialog_logout_description">Are you sure you want to logout ?</string>
     <string name="dialog_addboard_title">Add Board</string>
     <string name="dialog_addboard_description">Fill in the name of the new board</string>
+    <string name="dialog_addlist_title">Add List</string>
+    <string name="dialog_addlist_description">Fill in the name of the new list</string>
+    <string name="dialog_addtask_title">Add Task to:</string>
+    <string name="dialog_addtask_description">Fill in the name of the new task</string>
     <string name="dialog_removeboard_title">Deleting this board:</string>
     <string name="dialog_removeboard_description">Are you sure you want to delete? Once deleted you won\'t be able to bring the board back.</string>
+    <string name="dialog_removelist_title">Deleting this List:</string>
+    <string name="dialog_removelist_description">Are you sure you want to delete? All tasks in this list will be removed</string>
+    <string name="dialog_removetask_title">Deleting this task:</string>
+    <string name="dialog_removetask_description">Are you sure you want to delete? </string>
+    
+    
     <string name="button_ok">OK</string>
     <string name="button_cancel">Cancel</string>
 

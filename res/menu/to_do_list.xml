@@ -1,5 +1,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <item 
+        android:id="@+id/add_list"  
+        android:enabled="true"
+        android:visible="true"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_new"
+        android:title="@string/action_addlist">        
+    </item>
+    
+    <item 
+        android:id="@+id/remove_list"  
+        android:enabled="true"
+        android:visible="true"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_discard"
+        android:title="@string/action_removelist">        
+    </item>
+    
+    <item 
+        android:id="@+id/add_task"  
+        android:enabled="true"
+        android:visible="true"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_paste"
+        android:title="@string/action_addtask">        
+    </item>
+    
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

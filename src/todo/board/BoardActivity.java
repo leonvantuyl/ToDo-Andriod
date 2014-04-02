@@ -75,9 +75,10 @@ public class BoardActivity extends Activity implements BoardListListener {
 		api = new API(new OnAPIRequestListener() {		
 			@Override
 			public void onSuccess(int statusCode, String result) {
-				//TODO moeten we hier op wachten ? can ook gewoon altijd dus buiten de request om.
+				User.logout(prefs);		
 				Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 				startActivity(intent);
+				
 			}
 
 			@Override
@@ -88,11 +89,8 @@ public class BoardActivity extends Activity implements BoardListListener {
 			}
 		});
 		HashMap<String, Object> qs = new HashMap<String, Object>();
-		qs.put("toke", User.TOKEN);
+		qs.put("token", User.TOKEN);
 		api.request(RequestMethod.GET, "user", "logout", qs, null);
-		
-		User.logout(prefs);			
-		//TODO dit kan ook in de onSucces
 		
 	}
 
@@ -114,17 +112,16 @@ public class BoardActivity extends Activity implements BoardListListener {
 		alert.setTitle(R.string.dialog_addboard_title);
 		alert.setMessage(R.string.dialog_addboard_description);
 
-		// Set an EditText view to get user input 
 		final EditText input = new EditText(this);
 		alert.setView(input);
 
 		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String value = input.getText().toString();
-				if(boardList != null) {
+				if(!value.isEmpty()) {
 					boardList.addBoard(value);
 				} else {
-					Toast.makeText(getApplicationContext(), "BoardList null", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Name can't be empty", Toast.LENGTH_LONG).show();
 				}
 			}
 		});

@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import todo.main.R;
 import todo.models.Board;
@@ -99,13 +100,23 @@ public class BoardList extends Fragment {
 		public void onItemLongSelected(Board b);
 	}
 
-	public void addBoard(String name) {
+	public void addBoard(final String name) {
 		//TODO verplaats naar de adapter
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
 			public void onSuccess(int statusCode, String result) {
-				loadBoardList();				
+				JSONObject obj;
+				try {
+					obj = new JSONObject(result);
+					Board b = new Board();
+					b.id = obj.getInt("id");
+					b.name = name;			
+					list.add(b);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}					
 			}			
 
 			@Override
@@ -122,13 +133,22 @@ public class BoardList extends Fragment {
 
 	}
 
-	public void removeBoard(int id) {
+	public void removeBoard(final int id) {
 		//TODO verplaats naar de adapter
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
 			public void onSuccess(int statusCode, String result) {
-				loadBoardList();				
+				int size = list.getCount();
+				for(int i = 0; i<size; i++)
+				{
+					Board currentBoard = list.getItem(i);
+					if(currentBoard.id == id)
+					{
+						i = size;
+						list.remove(currentBoard);
+					}
+				}		
 			}			
 
 			@Override
@@ -147,7 +167,6 @@ public class BoardList extends Fragment {
 	}
 
 	public void loadBoardList() {
-		list.clear();
 		api = new API(new OnAPIRequestListener() {
 
 			@Override

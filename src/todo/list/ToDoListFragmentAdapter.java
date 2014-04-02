@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class ToDoListFragmentAdapter extends ArrayAdapter<Task> {
@@ -30,7 +31,19 @@ public class ToDoListFragmentAdapter extends ArrayAdapter<Task> {
 		if(t != null) {
 			// Set board item layout here
 			TextView tNameText = (TextView) v.findViewById(R.id.taskDescription);
-			tNameText.setText(t.name + ", " + t.list_id);
+			TextView tDate = (TextView) v.findViewById(R.id.taskEnd_date);
+			CheckBox tStatus = (CheckBox) v.findViewById(R.id.taskStatus);
+			
+			tNameText.setText(t.name);
+			tDate.setText(t.deadline);
+			
+			//TODO kijk of dit goed werkt.
+			if(t.status.equals("completed")){
+				tStatus.setChecked(true);
+			} else{
+				tStatus.setChecked(false);
+			}
+			
 		}
 		
 		return v;

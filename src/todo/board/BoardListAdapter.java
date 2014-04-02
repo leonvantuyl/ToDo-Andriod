@@ -14,7 +14,6 @@ public class BoardListAdapter extends ArrayAdapter<Board> {
 
 	public BoardListAdapter(Context context, int resource) {
 		super(context, resource);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public View getView(int position, View convertView, ViewGroup parent) {

@@ -24,33 +24,39 @@ public final class R {
         public static final int board_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_action_new=0x7f020000;
-        public static final int ic_action_stop=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
+        public static final int ic_action_discard=0x7f020000;
+        public static final int ic_action_new=0x7f020001;
+        public static final int ic_action_paste=0x7f020002;
+        public static final int ic_action_stop=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
-        public static final int add_board=0x7f080015;
+        public static final int action_settings=0x7f080018;
+        public static final int add_board=0x7f080016;
+        public static final int add_list=0x7f080019;
+        public static final int add_task=0x7f08001b;
         public static final int bList=0x7f080010;
         public static final int bListFragment=0x7f080000;
         public static final int boardText=0x7f080011;
-        public static final int listPager=0x7f08000e;
+        public static final int list=0x7f080012;
+        public static final int list_pager=0x7f08000e;
+        public static final int list_pager_title_strip=0x7f08000f;
         public static final int login=0x7f080006;
         public static final int login_form=0x7f080003;
         public static final int login_status=0x7f080001;
         public static final int login_status_message=0x7f080002;
-        public static final int logout=0x7f080016;
-        public static final int pager_title_strip=0x7f08000f;
+        public static final int logout=0x7f080017;
         public static final int password=0x7f080005;
         public static final int passwordRegister=0x7f08000b;
         public static final int re_passwordRegister=0x7f08000d;
         public static final int register=0x7f08000c;
         public static final int register_button=0x7f080008;
         public static final int register_form=0x7f080009;
+        public static final int remove_list=0x7f08001a;
         public static final int sign_in_button=0x7f080007;
-        public static final int taskDescription=0x7f080012;
-        public static final int taskEnd_date=0x7f080013;
-        public static final int taskStatus=0x7f080014;
+        public static final int taskDescription=0x7f080013;
+        public static final int taskEnd_date=0x7f080014;
+        public static final int taskStatus=0x7f080015;
         public static final int username=0x7f080004;
         public static final int usernameRegister=0x7f08000a;
     }
@@ -62,7 +68,8 @@ public final class R {
         public static final int activity_to_do_list=0x7f030004;
         public static final int board_list=0x7f030005;
         public static final int board_list_item=0x7f030006;
-        public static final int task_item=0x7f030007;
+        public static final int list_fragment=0x7f030007;
+        public static final int task_item=0x7f030008;
     }
     public static final class menu {
         public static final int board=0x7f070000;
@@ -73,19 +80,32 @@ public final class R {
     }
     public static final class string {
         public static final int action_addboard=0x7f050013;
+        public static final int action_addlist=0x7f050015;
+        public static final int action_addtask=0x7f050017;
         public static final int action_login=0x7f050008;
         public static final int action_logout=0x7f050014;
         public static final int action_register=0x7f050009;
+        public static final int action_removelist=0x7f050016;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int button_cancel=0x7f05001c;
-        public static final int button_ok=0x7f05001b;
-        public static final int dialog_addboard_description=0x7f050018;
-        public static final int dialog_addboard_title=0x7f050017;
-        public static final int dialog_logout_description=0x7f050016;
-        public static final int dialog_logout_title=0x7f050015;
-        public static final int dialog_removeboard_description=0x7f05001a;
-        public static final int dialog_removeboard_title=0x7f050019;
+        public static final int button_cancel=0x7f050027;
+        public static final int button_ok=0x7f050026;
+        public static final int dialog_addboard_description=0x7f05001b;
+        public static final int dialog_addboard_title=0x7f05001a;
+        public static final int dialog_addlist_description=0x7f05001d;
+        public static final int dialog_addlist_title=0x7f05001c;
+        public static final int dialog_addtask_description=0x7f05001f;
+        public static final int dialog_addtask_title=0x7f05001e;
+        public static final int dialog_logout_description=0x7f050019;
+        /**  dialogs 
+         */
+        public static final int dialog_logout_title=0x7f050018;
+        public static final int dialog_removeboard_description=0x7f050021;
+        public static final int dialog_removeboard_title=0x7f050020;
+        public static final int dialog_removelist_description=0x7f050023;
+        public static final int dialog_removelist_title=0x7f050022;
+        public static final int dialog_removetask_description=0x7f050025;
+        public static final int dialog_removetask_title=0x7f050024;
         public static final int error_field_required=0x7f05000e;
         public static final int error_incorrect_password=0x7f05000d;
         public static final int error_invalid_password=0x7f05000c;

@@ -4,7 +4,7 @@ public class Task {
 
 	public int id;
 	public String name;
-	public String description;
+	public String deadline;
 	public int list_id;
-	
+	public String status;
 }
