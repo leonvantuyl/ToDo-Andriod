@@ -38,6 +38,7 @@ public class BoardList extends Fragment {
 		ListView listView = (ListView) view.findViewById(R.id.bList);
 		list = new BoardListAdapter(getActivity(), R.id.bListFragment);
 
+		
 		listView.setClickable(true);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -99,6 +100,7 @@ public class BoardList extends Fragment {
 	}
 
 	public void addBoard(String name) {
+		//TODO verplaats naar de adapter
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
@@ -121,6 +123,7 @@ public class BoardList extends Fragment {
 	}
 
 	public void removeBoard(int id) {
+		//TODO verplaats naar de adapter
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
@@ -137,7 +140,6 @@ public class BoardList extends Fragment {
 
 			}
 		});
-
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("bid", id);
 		api.request(RequestMethod.DELETE, "board", null, args);
@@ -145,6 +147,7 @@ public class BoardList extends Fragment {
 	}
 
 	public void loadBoardList() {
+		list.clear();
 		api = new API(new OnAPIRequestListener() {
 
 			@Override

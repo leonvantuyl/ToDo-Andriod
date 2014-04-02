@@ -24,6 +24,9 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="error_nomatch_password">The passwords are not the same</string>
     <string name="action_addboard">ADD</string>
+    <string name="action_logout">logout</string>
+    <string name="dialog_logout_title">Logout ?</string>
+    <string name="dialog_logout_description">Are you sure you want to logout ?</string>
     <string name="dialog_addboard_title">Add Board</string>
     <string name="dialog_addboard_description">Fill in the name of the new board</string>
     <string name="dialog_removeboard_title">Deleting this board:</string>

@@ -10,6 +10,15 @@
         android:title="@string/action_addboard">        
     </item>
     
+    <item 
+        android:id="@+id/logout"  
+        android:enabled="true"
+        android:visible="true"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_stop"
+        android:title="@string/action_logout">        
+    </item>
+    
         <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
