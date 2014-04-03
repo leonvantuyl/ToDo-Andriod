@@ -27,6 +27,9 @@
         <activity
             android:name="todo.list.ToDoListActivity"
             android:label="@string/title_activity_to_do_list" >
+            <meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="todo.board.BoardActivity" />
         </activity>
         <activity
             android:name="todo.user.LoginActivity"

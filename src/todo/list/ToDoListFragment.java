@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import todo.main.R;
 import todo.models.Board;
@@ -74,11 +75,12 @@ public class ToDoListFragment extends Fragment {
 
 			for(int i = 0; i < tasks.length(); i++) {
 				Task t = new Task();
-				t.name = tasks.getJSONObject(i).getString("name");
-				t.deadline = tasks.getJSONObject(i).getString("end_date");
-				t.id = tasks.getJSONObject(i).getInt("id");
-				t.list_id = tasks.getJSONObject(i).getInt("list_id");
-				t.status = tasks.getJSONObject(i).getString("status");
+				JSONObject taskObj = tasks.getJSONObject(i);
+				t.name = taskObj.getString("name");
+				t.deadline = taskObj.getString("end_date");
+				t.id = taskObj.getInt("id");
+				t.list_id = taskObj.getInt("list_id");
+				t.status = taskObj.getString("status");
 				list.add(t);
 				//TODO word alle data goed gevult ?
 			}

@@ -12,11 +12,13 @@ import todo.models.List;
 import todo.utils.API;
 import todo.utils.API.OnAPIRequestListener;
 import todo.utils.API.RequestMethod;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +50,8 @@ public class ToDoListActivity extends FragmentActivity {
 		loadLists();
 
 
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -77,6 +81,9 @@ public class ToDoListActivity extends FragmentActivity {
 			else
 				Toast.makeText(getApplicationContext(), "There are no lists to remove", Toast.LENGTH_LONG).show();
 			return true;
+		case android.R.id.home:
+	            NavUtils.navigateUpFromSameTask(this);
+	            return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
