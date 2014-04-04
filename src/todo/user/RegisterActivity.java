@@ -98,7 +98,7 @@ public class RegisterActivity extends Activity {
 				}
 			}
 			
-		});
+		},this);
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("name", name);
 		args.put("password", password);

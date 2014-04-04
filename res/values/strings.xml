@@ -44,6 +44,8 @@
     <string name="dialog_removelist_description">Are you sure you want to delete? All tasks in this list will be removed</string>
     <string name="dialog_removetask_title">Deleting this task:</string>
     <string name="dialog_removetask_description">Are you sure you want to delete? </string>
+    <string name="dialog_noInternet_title">No internet connection</string>
+    <string name="dialog_noInternet_description">Your request failed because you have no internet connection </string>
     
     
     <string name="button_ok">OK</string>

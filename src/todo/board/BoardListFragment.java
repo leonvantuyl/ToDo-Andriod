@@ -124,7 +124,7 @@ public class BoardListFragment extends Fragment {
 			public void onError(int statusCode, String result) {
 				Toast.makeText(getActivity(), "error bij POST board", Toast.LENGTH_LONG).show();
 			}
-		});
+		} ,getActivity());
 
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("bName", name);
@@ -158,7 +158,7 @@ public class BoardListFragment extends Fragment {
 				}
 
 			}
-		});
+		},getActivity());
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("bid", id);
 		api.request(RequestMethod.DELETE, "board", null, args);
@@ -177,7 +177,7 @@ public class BoardListFragment extends Fragment {
 			public void onError(int statusCode, String result) {
 				Toast.makeText(getActivity(), "error bij GET board", Toast.LENGTH_LONG).show();
 			}
-		});
+		},getActivity());
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("token",User.TOKEN);
 		// Send request

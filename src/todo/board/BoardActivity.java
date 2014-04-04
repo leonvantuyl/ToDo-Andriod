@@ -37,6 +37,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 		setContentView(R.layout.activity_board);
 		prefs = this.getSharedPreferences("todo", Context.MODE_PRIVATE);
 		boardList = (BoardListFragment) this.getFragmentManager().findFragmentById(R.id.bListFragment);
+		
 	}
 
 	@Override
@@ -84,7 +85,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 					Toast.makeText(getApplicationContext(), "error bij logout", Toast.LENGTH_LONG).show();
 				}
 			}
-		});
+		} ,this );
 		HashMap<String, Object> qs = new HashMap<String, Object>();
 		qs.put("token", User.TOKEN);
 		api.request(RequestMethod.GET, "user", "logout", qs, null);

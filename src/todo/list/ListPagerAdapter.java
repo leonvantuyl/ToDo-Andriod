@@ -95,6 +95,8 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 					l.name = name;
 					l.board_id = bid;
 					lists.add(l);
+					if(currentIndex <0)
+						currentIndex = 0;
 					notifyDataSetChanged();
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -104,7 +106,7 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 			@Override
 			public void onError(int statusCode, String result) {
 			}
-		});
+		},this.getCurrentFragment().getActivity());
 
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("name", name);
@@ -129,7 +131,7 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 				@Override
 				public void onError(int statusCode, String result) {				
 				}
-			});
+			},this.getCurrentFragment().getActivity());
 			HashMap<String, Object> args = new HashMap<String, Object>();
 			args.put("id", currentList.id);
 			api.request(RequestMethod.DELETE, "list", null, args);

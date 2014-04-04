@@ -89,7 +89,7 @@ public class ToDoListFragment extends Fragment implements CheckboxListener {
 			public void onError(int statusCode, String result) {
 				Toast.makeText(getActivity(), "404 error bij task", Toast.LENGTH_LONG).show();
 			}
-		});
+		},getActivity());
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("lid", lid);
@@ -132,7 +132,7 @@ public class ToDoListFragment extends Fragment implements CheckboxListener {
 			public void onError(int statusCode, String result) {
 				Toast.makeText(getActivity(), "error bij status update task", Toast.LENGTH_LONG).show();
 			}
-		});
+		},getActivity());
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("id", item.id);
 		map.put("id", status);
@@ -164,7 +164,7 @@ public class ToDoListFragment extends Fragment implements CheckboxListener {
 			public void onError(int statusCode, String result) {
 				Toast.makeText(getActivity(), "error bij delete task", Toast.LENGTH_LONG).show();
 			}
-		});
+		},getActivity());
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("id", currentTask.id);
 		api.request(RequestMethod.DELETE, "task", null, args);
@@ -195,7 +195,7 @@ public class ToDoListFragment extends Fragment implements CheckboxListener {
 			public void onError(int statusCode, String result) {
 				Toast.makeText(getActivity(), "error bij POST task", Toast.LENGTH_LONG).show();
 			}
-		});
+		},getActivity());
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("list_id", lid);
 		args.put("name", value);

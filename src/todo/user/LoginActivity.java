@@ -107,7 +107,7 @@ public class LoginActivity extends Activity {
 					passwordT.setError(getString(R.string.error_wronguserpass));
 				}
 			}
-		});
+		},this);
 		HashMap<String, Object> qs = new HashMap<String, Object>();
 		qs.put("name", name);
 		qs.put("password", password);

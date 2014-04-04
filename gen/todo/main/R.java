@@ -88,8 +88,8 @@ public final class R {
         public static final int action_removelist=0x7f050016;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int button_cancel=0x7f050027;
-        public static final int button_ok=0x7f050026;
+        public static final int button_cancel=0x7f050029;
+        public static final int button_ok=0x7f050028;
         public static final int dialog_addboard_description=0x7f05001b;
         public static final int dialog_addboard_title=0x7f05001a;
         public static final int dialog_addlist_description=0x7f05001d;
@@ -100,6 +100,8 @@ public final class R {
         /**  dialogs 
          */
         public static final int dialog_logout_title=0x7f050018;
+        public static final int dialog_noInternet_description=0x7f050027;
+        public static final int dialog_noInternet_title=0x7f050026;
         public static final int dialog_removeboard_description=0x7f050021;
         public static final int dialog_removeboard_title=0x7f050020;
         public static final int dialog_removelist_description=0x7f050023;

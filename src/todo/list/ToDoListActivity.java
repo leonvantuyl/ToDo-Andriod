@@ -113,7 +113,7 @@ public class ToDoListActivity extends FragmentActivity implements TaskListListen
 					Toast.makeText(getApplicationContext(), "404 error :(", Toast.LENGTH_LONG).show();
 				}
 			}
-		});
+		},this);
 		HashMap<String, Object> qs = new HashMap<String, Object>();
 		qs.put("bid", b_id);
 		api.request(RequestMethod.GET, "list", "listsonly", qs, null);
