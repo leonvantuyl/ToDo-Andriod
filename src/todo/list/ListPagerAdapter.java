@@ -6,25 +6,23 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import todo.models.Board;
 import todo.models.List;
-import todo.user.User;
 import todo.utils.API;
 import todo.utils.API.OnAPIRequestListener;
 import todo.utils.API.RequestMethod;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 
 	private ArrayList<List> lists;
 	public int currentIndex;
 	private API api;
+	private Fragment mCurrentFragment;
 
 	public ListPagerAdapter(FragmentManager fm, ArrayList<List> lists) {
 		super(fm);
@@ -32,15 +30,26 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 		resetLocation();
 	}
 
-
 	@Override
 	public Fragment getItem(int i) {
 		ToDoListFragment fragment = new ToDoListFragment();
 		Bundle args = new Bundle();
-		// Our object is just an integer :-P
 		args.putInt(ToDoListFragment.LIST_ID, lists.get(i).id);
 		fragment.setArguments(args);
 		return fragment;
+	}
+
+	@Override
+	public void setPrimaryItem(ViewGroup container, int position, Object object) {
+		if (mCurrentFragment != object) {
+			mCurrentFragment = (Fragment) object;
+		}
+		super.setPrimaryItem(container, position, object);
+	}
+	
+	public Fragment getCurrentFragment()
+	{
+		return mCurrentFragment;
 	}
 
 	@Override
@@ -73,7 +82,7 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 
 
 	public void addList(final String name, final int bid) {
-	
+
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
@@ -88,18 +97,15 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 					lists.add(l);
 					notifyDataSetChanged();
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}					
 			}			
 
 			@Override
 			public void onError(int statusCode, String result) {
-				//TODO in de API stond geen error code bij de post method van de boardcontroller. Dus het gaat alleen fout als er geen connectie is.
-
 			}
 		});
-		
+
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("name", name);
 		args.put("board_id", bid);
@@ -122,10 +128,6 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 
 				@Override
 				public void onError(int statusCode, String result) {				
-					if(statusCode == 404) {
-						//TODO error
-					}
-
 				}
 			});
 			HashMap<String, Object> args = new HashMap<String, Object>();

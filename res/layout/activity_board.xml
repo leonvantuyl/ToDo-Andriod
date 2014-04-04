@@ -7,6 +7,6 @@
     <fragment android:id="@+id/bListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="todo.board.BoardList" />
+        android:name="todo.board.BoardListFragment" />
 
 </RelativeLayout>

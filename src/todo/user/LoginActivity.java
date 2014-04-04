@@ -7,21 +7,18 @@ import org.json.JSONObject;
 
 import todo.board.BoardActivity;
 import todo.main.R;
-import todo.main.R.layout;
-import todo.main.R.menu;
 import todo.utils.API;
 import todo.utils.API.OnAPIRequestListener;
 import todo.utils.API.RequestMethod;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
@@ -85,7 +82,6 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void onSuccess(int statusCode, String result) {
-				// TODO Auto-generated method stub
 				JSONObject tokenObj;
 				try {
 					tokenObj = new JSONObject(result);
@@ -96,14 +92,12 @@ public class LoginActivity extends Activity {
 						startActivity(intent);
 					}
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 
 			@Override
 			public void onError(int statusCode, String result) {
-				// TODO Auto-generated method stub
 				if(statusCode == 404) {
 					// Not found
 					EditText nameT = (EditText) findViewById(R.id.username);

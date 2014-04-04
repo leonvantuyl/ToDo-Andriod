@@ -18,9 +18,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import todo.utils.http.HttpDeleteWithBody;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.util.Log;
 
+@SuppressLint("DefaultLocale")
 public class API {
 
 	private String host = "http://sloot.homeip.net/todo/api";
@@ -41,6 +43,7 @@ public class API {
 		requestWithUrl(method, url, qs, bodyArgs);
 	}
 	
+	@SuppressLint("DefaultLocale")
 	public void requestWithUrl(RequestMethod method, String url, HashMap<String, Object> qs, HashMap<String, Object> bodyArgs) {
 		String queryString = "";
 		if(qs != null) {
@@ -127,7 +130,6 @@ public class API {
 
 		@Override
 		protected String doInBackground(String... args) {
-			// TODO Auto-generated method stub
 			return doRequest(args[0], args[1], args[2]);
 		}
 		

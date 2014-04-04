@@ -19,7 +19,6 @@ public class HttpDeleteWithBody extends HttpEntityEnclosingRequestBase {
     
     @Override
 	public String getMethod() {
-		// TODO Auto-generated method stub
 		return METHOD_NAME;
 	}
 

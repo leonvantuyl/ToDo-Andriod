@@ -19,14 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
-public class BoardList extends Fragment {
+public class BoardListFragment extends Fragment {
 
 	private API api;
 	private BoardListListener bListener;
@@ -34,12 +33,22 @@ public class BoardList extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
+		//initiate and connect
 		View view = inflater.inflate(R.layout.board_list, container, false);
 		ListView listView = (ListView) view.findViewById(R.id.bList);
-		list = new BoardListAdapter(getActivity(), R.id.bListFragment);
+		list = new BoardListAdapter(getActivity(), R.id.bListFragment);		
+		listView.setAdapter(list);
 
-		
+		//set listeners for the objects in the list
+		setListeners(listView);
+
+		//load the 'lists' for in the listview
+		loadBoardList();
+
+		return view;
+	}
+
+	private void setListeners(ListView listView) {
 		listView.setClickable(true);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -49,7 +58,7 @@ public class BoardList extends Fragment {
 			}
 
 		});
-		
+
 		listView.setLongClickable(true);
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -59,12 +68,7 @@ public class BoardList extends Fragment {
 				return true;
 			}
 		});
-		
-		listView.setAdapter(list);
 
-		loadBoardList();
-
-		return view;
 	}
 
 	@Override
@@ -90,7 +94,6 @@ public class BoardList extends Fragment {
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -101,7 +104,6 @@ public class BoardList extends Fragment {
 	}
 
 	public void addBoard(final String name) {
-		//TODO verplaats naar de adapter
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
@@ -114,15 +116,13 @@ public class BoardList extends Fragment {
 					b.name = name;			
 					list.add(b);
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}					
 			}			
 
 			@Override
 			public void onError(int statusCode, String result) {
-				//TODO in de API stond geen error code bij de post method van de boardcontroller. Dus het gaat alleen fout als er geen connectie is.
-
+				Toast.makeText(getActivity(), "error bij POST board", Toast.LENGTH_LONG).show();
 			}
 		});
 
@@ -134,7 +134,6 @@ public class BoardList extends Fragment {
 	}
 
 	public void removeBoard(final int id) {
-		//TODO verplaats naar de adapter
 		api = new API(new OnAPIRequestListener() {
 
 			@Override
@@ -176,8 +175,7 @@ public class BoardList extends Fragment {
 
 			@Override
 			public void onError(int statusCode, String result) {
-				// TODO Auto-generated method stub
-
+				Toast.makeText(getActivity(), "error bij GET board", Toast.LENGTH_LONG).show();
 			}
 		});
 		HashMap<String, Object> map = new HashMap<String, Object>();

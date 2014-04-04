@@ -2,10 +2,7 @@ package todo.board;
 
 import java.util.HashMap;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import todo.board.BoardList.BoardListListener;
+import todo.board.BoardListFragment.BoardListListener;
 import todo.list.ToDoListActivity;
 import todo.main.R;
 import todo.models.Board;
@@ -30,7 +27,7 @@ import android.widget.Toast;
 public class BoardActivity extends Activity implements BoardListListener {
 
 	public final static String BOARD_ID = "bid";
-	public BoardList boardList;
+	public BoardListFragment boardList;
 	public SharedPreferences prefs;
 	private API api;
 
@@ -39,7 +36,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_board);
 		prefs = this.getSharedPreferences("todo", Context.MODE_PRIVATE);
-		boardList = (BoardList) this.getFragmentManager().findFragmentById(R.id.bListFragment);
+		boardList = (BoardListFragment) this.getFragmentManager().findFragmentById(R.id.bListFragment);
 	}
 
 	@Override
@@ -84,7 +81,7 @@ public class BoardActivity extends Activity implements BoardListListener {
 			@Override
 			public void onError(int statusCode, String result) {
 				if(statusCode == 404) {
-					//TODO passende error 
+					Toast.makeText(getApplicationContext(), "error bij logout", Toast.LENGTH_LONG).show();
 				}
 			}
 		});

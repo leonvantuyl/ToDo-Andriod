@@ -6,17 +6,16 @@ import todo.main.R;
 import todo.utils.API;
 import todo.utils.API.OnAPIRequestListener;
 import todo.utils.API.RequestMethod;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 
@@ -86,14 +85,12 @@ public class RegisterActivity extends Activity {
 
 			@Override
 			public void onSuccess(int statusCode, String result) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(ra, LoginActivity.class);
 				startActivity(intent);
 			}
 
 			@Override
 			public void onError(int statusCode, String result) {
-				// TODO Auto-generated method stub
 				if(statusCode == 409) {
 					EditText nameT = (EditText) findViewById(R.id.usernameRegister);
 					nameT.setError(getString(R.string.error_user_exists));

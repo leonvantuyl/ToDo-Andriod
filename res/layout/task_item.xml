@@ -11,11 +11,13 @@
     <TextView android:id="@+id/taskDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+   		android:longClickable="true"
         />
     <TextView android:id="@+id/taskEnd_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/taskDescription"
+        android:longClickable="true"
         />
     <CheckBox android:id="@+id/taskStatus" 
         android:layout_width="wrap_content"

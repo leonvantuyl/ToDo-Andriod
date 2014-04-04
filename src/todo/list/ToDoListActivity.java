@@ -7,8 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import todo.board.BoardActivity;
+import todo.list.ToDoListFragment.TaskListListener;
 import todo.main.R;
 import todo.models.List;
+import todo.models.Task;
 import todo.utils.API;
 import todo.utils.API.OnAPIRequestListener;
 import todo.utils.API.RequestMethod;
@@ -25,7 +27,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ToDoListActivity extends FragmentActivity {
+public class ToDoListActivity extends FragmentActivity implements TaskListListener{
 
 	private int b_id;
 	private API api;
@@ -59,6 +61,12 @@ public class ToDoListActivity extends FragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.to_do_list, menu);
 		return true;
+	}
+	
+	//interface implementation
+	@Override
+	public void onItemLongSelected(Task t) {
+		dialogRemoveTask(t);		
 	}
 
 	@Override
@@ -102,7 +110,7 @@ public class ToDoListActivity extends FragmentActivity {
 			@Override
 			public void onError(int statusCode, String result) {
 				if(statusCode == 404) {
-					//TODO passende error 
+					Toast.makeText(getApplicationContext(), "404 error :(", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
@@ -123,12 +131,12 @@ public class ToDoListActivity extends FragmentActivity {
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
-				// TODO Auto-generated method stub				
+				//nothing	
 			}
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				// TODO Auto-generated method stub				
+				//nothing			
 			}
 		});
 		mViewPager.setAdapter(mPagerAdapter);
@@ -212,10 +220,31 @@ public class ToDoListActivity extends FragmentActivity {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String value = input.getText().toString();
 				if(!value.isEmpty()) {
-					//TODO add
+					ToDoListFragment fragment = (ToDoListFragment) mPagerAdapter.getCurrentFragment();
+					fragment.addTask(value);
 				} else {
 					Toast.makeText(getApplicationContext(), "Name can't be empty", Toast.LENGTH_LONG).show();
 				}
+			}
+		});
+
+		alert.setNegativeButton(R.string.button_cancel, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				// Canceled.
+			}
+		});
+		alert.show();
+	}
+	
+	private void dialogRemoveTask(final Task currentTask) {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		alert.setTitle(getString(R.string.dialog_removetask_title) +  " \"" + currentTask.name + "\"");		
+		alert.setMessage(R.string.dialog_removetask_description);
+ 
+		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				ToDoListFragment fragment = (ToDoListFragment) mPagerAdapter.getCurrentFragment();
+				fragment.removeTask(currentTask);
 			}
 		});
 
