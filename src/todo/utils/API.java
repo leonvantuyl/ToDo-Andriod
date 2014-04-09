@@ -70,23 +70,29 @@ public class API {
 	}
 
 	private void noInternetAlert() {
+
 		AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
 		alert.setTitle(R.string.dialog_noInternet_title);		
 		alert.setMessage(R.string.dialog_noInternet_description);
- 
+
 		alert.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				//close
 			}
 		});	
-		
+
 		alert.show();
+
 	}
 
 	private boolean isNetworkAvailable() {
-		ConnectivityManager connectivityManager = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+		if(ctx != null)
+		{
+			ConnectivityManager connectivityManager = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+			return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+		}
+		return true;
 	}
 
 	public static String doRequest(String method, String url, String bodyArgsStr) {

@@ -106,7 +106,7 @@ public class ListPagerAdapter extends FragmentStatePagerAdapter  {
 			@Override
 			public void onError(int statusCode, String result) {
 			}
-		},this.getCurrentFragment().getActivity());
+		},null);
 
 		HashMap<String, Object> args = new HashMap<String, Object>();
 		args.put("name", name);
